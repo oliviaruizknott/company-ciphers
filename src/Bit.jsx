@@ -13,7 +13,7 @@ const Bit = ({ bit, index }) => {
   return (
     <img
       key={`${bit}-${index}`}
-      className="Bit"
+      className={`Bit bit${bit}`}
       onClick={handleClick}
       src={`./${shapes[parseInt(bit)]}.svg`}
       alt={bit}
