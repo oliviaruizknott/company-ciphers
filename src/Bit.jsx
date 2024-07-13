@@ -1,8 +1,14 @@
 import { useState } from "react";
+import Circle from "./shapes/Circle";
+import Quarter from "./shapes/Quarter";
+import Square from "./shapes/Square";
+import { COLORS } from "./colors";
+import useStore from "./store";
 
-const shapes = ["circle", "quarter", "square"];
+const shapes = [Circle, Quarter, Square];
 
 const Bit = ({ bit, index }) => {
+  const shapeColors = useStore((state) => state.shapeColors);
   const [rotation, setRotation] = useState(0);
 
   const handleClick = () => {
@@ -10,13 +16,14 @@ const Bit = ({ bit, index }) => {
     setRotation((prevRotation) => prevRotation + 90);
   };
 
+  const Shape = shapes[parseInt(bit)];
+
   return (
-    <img
+    <Shape
       key={`${bit}-${index}`}
       className={`Bit bit${bit}`}
+      color={COLORS[shapeColors[bit]]}
       onClick={handleClick}
-      src={`./${shapes[parseInt(bit)]}.svg`}
-      alt={bit}
       style={{ transform: `rotate(${rotation}deg)` }}
     />
   );

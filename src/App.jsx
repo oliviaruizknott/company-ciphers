@@ -1,10 +1,13 @@
 import { useState } from "react";
-import "./App.css";
+import useStore from "./store";
 import { TRINARY } from "./letterLookup";
+import { COLORS } from "./colors";
 import Bit from "./Bit";
 import Palette from "./Palette";
+import "./App.css";
 
 function App() {
+  const shapeColors = useStore((state) => state.shapeColors);
   const [letters, setLetters] = useState("");
 
   // an in put that takes exactly 3 characters
@@ -33,7 +36,12 @@ function App() {
     const bordered = letters.length === 3 ? "bordered" : "";
 
     return (
-      <div className={`letters ${bordered}`}>
+      <div
+        className={`letters ${bordered}`}
+        style={{
+          borderColor: bordered ? COLORS[shapeColors[0]] : "transparent",
+        }}
+      >
         {letters.split("").map((letter, i) => renderLetter(letter, i))}
       </div>
     );
@@ -50,21 +58,11 @@ function App() {
     );
   };
 
-  const renderShapes = () => {
-    return (
-      <div className="shapes-palette">
-        <img src="./circle.svg" alt="circle" />
-        <img src="./quarter.svg" alt="quarter" />
-        <img src="./square.svg" alt="square" />
-      </div>
-    );
-  };
-
   return (
     <div className="App">
       {renderInput()}
       {renderLetters()}
-      {/* <Palette /> */}
+      <Palette />
     </div>
   );
 }

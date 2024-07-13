@@ -1,9 +1,11 @@
 import { create } from "zustand";
-import { BLACK } from "./colors";
+import { devtools } from "zustand/middleware";
 
-const useStore = create((set) => ({
-  shapeColors: [BLACK, BLACK, BLACK],
+const store = (set) => ({
+  shapeColors: [0, 0, 0], // circle, quarter, square
   setShapeColors: (colors) => set({ shapeColors: colors }),
-}));
+});
+
+const useStore = create(devtools(store, "ShapeColorsStore"));
 
 export default useStore;

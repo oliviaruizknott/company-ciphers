@@ -30,9 +30,9 @@ input:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  transition: border-color 1s ease;
+  border: 20px solid transparent;
+  border-radius: 4px;
+  transition: border-color 0.5s ease;
 }
 .letters.bordered {
   border-color: black;
@@ -43,7 +43,7 @@ input:focus {
 }
 
 .Bit {
-  /* transition: transform 0.15s; */
+  transition: transform 0.15s;
 }
 .Bit.bit1 {
   cursor: pointer;
@@ -55,7 +55,8 @@ input:focus {
 .Palette {
   position: absolute;
   bottom: 2rem;
+  cursor: pointer;
 }
-.Palette img {
-  width: 20px;
+.Palette svg {
+  cursor: pointer;
 }

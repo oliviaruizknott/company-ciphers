@@ -1,10 +1,12 @@
 import * as React from "react";
-const Circle = (props) => (
+const Circle = ({ size = 80, color, onClick = null, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={80}
-    height={80}
+    viewBox="0 0 80 80"
+    width={size}
+    height={size}
     fill="none"
+    onClick={onClick}
     {...props}
   >
     <rect
@@ -12,7 +14,7 @@ const Circle = (props) => (
       height={78}
       x={1}
       y={1}
-      fill="#000"
+      fill={color || "#000"}
       stroke="#fff"
       strokeWidth={2}
       rx={39}
