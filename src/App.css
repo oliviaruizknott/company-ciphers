@@ -43,13 +43,13 @@ input:focus {
 }
 
 .Bit {
-  transition: transform 0.15s;
+  /* transition: transform 0.15s; */
 }
 .Bit.bit1 {
   cursor: pointer;
 }
 .Bit:hover {
-  transform: scale(2);
+  /* transform: scale(2); */
 }
 
 .Palette {
